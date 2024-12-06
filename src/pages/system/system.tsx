@@ -206,7 +206,7 @@ const system = () => {
             ...defaultCheckedKeys.checked,
             ...defaultCheckedKeys.halfChecked,
           ];
-          const res = await apiRoleUpdate({ id: roleInfo?._id, permission });
+          const res = await apiRoleUpdate({ id: roleInfo?._id, permission});
           if (res.data.code === 200) {
             message.success("权限分配成功");
             setDefaultCheckedKeys(null);
