@@ -57,7 +57,7 @@ export default () => {
                 const res = await apiExamRemove({ id: row._id });
                 if (res.data.code === 200) {
                   message.success("试卷删除成功");
-                  getExamList();
+                  getExamList({});
                 }
               }}
             >
@@ -124,7 +124,7 @@ export default () => {
                               data.classify,
                               data.creator,
                               data.questions
-                                .map((question) => {
+                                .map((question: { question: any; options: any[]; }) => {
                                   if (!question) {
                                     return;
                                   }
@@ -167,7 +167,7 @@ export default () => {
         headerTitle="批量操作"
       />
       <PaperShow
-        drawerData={drawerData}
+        drawerData={drawerData!}
         drawerVisit={drawerVisit}
         setDrawerVisit={setDrawerVisit}
       ></PaperShow>

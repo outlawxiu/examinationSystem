@@ -17,7 +17,13 @@ export interface userInfo {
   username?: string;
   __v?: number;
   _id: string;
+  permission?:permission[]
 }
+
+interface permission {
+  path:string
+}
+
 export interface userInfoParams {
   age?: number;
   avator?: string;

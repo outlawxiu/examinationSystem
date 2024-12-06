@@ -1,6 +1,7 @@
-import { lazy } from "react";
+import { lazy, ReactNode } from "react";
 import RoutePermission from "./RoutePermission";
 import { Navigate } from "react-router-dom";
+import { JSX } from "react/jsx-runtime";
 const Home = lazy(() => import("../pages/home/home"));
 const Login = lazy(() => import("../pages/login/login"));
 const NotFound = lazy(() => import("../pages/notFound/notFound"));
@@ -148,8 +149,8 @@ const routes = [
     element: <NotFound></NotFound>,
   },
 ];
-const formatRoutes = (routes) => {
-  routes.forEach((item) => {
+const formatRoutes = (routes: any[]) => {
+  routes.forEach((item: { isPermission: any; element: string | number | boolean | JSX.Element | Iterable<ReactNode> | null | undefined; children: any; }) => {
     if (item.isPermission) {
       item.element = <RoutePermission>{item.element}</RoutePermission>;
     }

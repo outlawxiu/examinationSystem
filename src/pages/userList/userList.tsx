@@ -260,7 +260,7 @@ const userList = () => {
           setSearchParams(params);
         }}
         onReset={() => {
-          setSearchParams((prev) => ({ page: 1, pagesize: prev!.pagesize }));
+          setSearchParams((prev:{page:number,pagesize:number}) => ({ page: 1, pagesize: prev!.pagesize }));
         }}
         rowKey="_id"
         scroll={{ x: "max-content" }}

@@ -25,7 +25,7 @@ export const waitTime = async (time: number = 100) => {
   await waitTimePromise(time);
 };
 
-const PaperShow = (props) => {
+const PaperShow = (props: { setDrawerVisit: ((visible: boolean) => void) | undefined; drawerVisit: boolean | undefined; drawerData: { questions: any[]; }; }) => {
   const pageRef = useRef(null);
   // const [drawerVisit, setDrawerVisit] = useState(false);
   // const [drawerData, setDrawerData] = useState();
@@ -109,16 +109,16 @@ const PaperShow = (props) => {
                   {item.type === 3 && "判断题"}
                 </h3>
                 <ul>
-                  {item.options.map((option, index) => (
-                    <li key={index}>
-                      {(index + 10).toString(16).toUpperCase()} {option}
+                  {item.options.map((option: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined, index: React.Key | null | undefined) => (
+                    <li key={index }>
+                      {(index as number + 10).toString(16).toUpperCase()} {option}
                     </li>
                   ))}
                 </ul>
                 <b>
                   答案:
                   {Array.isArray(item.answer)
-                    ? item.answer.map((a) => a)
+                    ? item.answer.map((a: any) => a)
                     : item.answer}
                 </b>
               </div>

@@ -20,7 +20,15 @@ import {
 import { useRequest } from "ahooks";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+interface examInfo{
+  name?:string
+classify?:string
+examId?:string
+group?:string
+examiner?:string
+startTime?:number
+endTime?:number
+}
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -37,7 +45,7 @@ export default () => {
   const { data: studentGroupList, run: getStudentGroupList } =
     useRequest(apiStudentGroupList);
   const { data: examList, run: getExamList } = useRequest(apiExamList);
-  const [examInfo, setExamInfo] = useState({});
+  const [examInfo, setExamInfo] = useState<examInfo>({});
   const actionRef = useRef();
   const columns = [
     { title: "试卷名称", dataIndex: "name" },
@@ -98,7 +106,7 @@ export default () => {
             onChange={(value, row) => {
               formRef.current?.setFieldValue("classify", row.label);
             }}
-            options={classifyList?.data.data.list.map((item) => ({
+            options={classifyList?.data.data.list.map((item: { name: any; _id: any; }) => ({
               label: item.name,
               value: item._id,
             }))}
@@ -112,7 +120,7 @@ export default () => {
                 required: true,
               },
             ]}
-            options={userList?.data.data.list.map((item) => ({
+            options={userList?.data.data.list.map((item: { username: any; _id: any; }) => ({
               label: item.username,
               value: item._id,
             }))}
@@ -129,7 +137,7 @@ export default () => {
                 required: true,
               },
             ]}
-            options={studentGroupList?.data.data.list.map((item) => ({
+            options={studentGroupList?.data.data.list.map((item: { name: any; _id: any; }) => ({
               label: item.name,
               value: item._id,
             }))}
@@ -168,7 +176,7 @@ export default () => {
               },
             }}
             columns={columns}
-            dataSource={examList?.data.data.list.filter((item) => {
+            dataSource={examList?.data.data.list.filter((item: { classify: any; }) => {
               return item.classify === examInfo.classify;
             })}
           />
@@ -189,7 +197,7 @@ export default () => {
               startTime: examInfo.startTime,
               endTime: examInfo.endTime,
             };
-            const res = await apiExaminationCreate(params);
+            const res = await apiExaminationCreate(params as Required<examInfo>);
             if (res.data.code === 200) {
               message.success("考试创建成功");
               navigate("/exam/record");

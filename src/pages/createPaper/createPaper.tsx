@@ -31,13 +31,13 @@ export default () => {
   const formRef = useRef<ProFormInstance>();
   const { data: classifyList } = useRequest(apiClassifyList);
   const [questionList, setQuestionList] = useState();
-  const [paperInfo, setPaperInfo] = useState({});
+  const [paperInfo, setPaperInfo] = useState<{question?:string}>({});
   const [paperMethod, setPaperMethod] = useState(true);
   const [questionsNumber, setQuestionsNumber] = useState(0);
   const [modalVisit, setModalVisit] = useState(false);
   const [selectedQuestions, setSelectedQuestions] = useState();
   const protable = useRef();
-  const getQuestionList = async (params) => {
+  const getQuestionList = async (params: { classify: any; }) => {
     const res = await apiQuestionList(params);
     if (res.data.code === 200) {
       setQuestionList(res.data.data.list);
@@ -53,7 +53,7 @@ export default () => {
     {
       title: "题型",
       dataIndex: "type",
-      render(value, row) {
+      render(value: any, row: { type: number; }) {
         if (row.type === 1) {
           return "单选题";
         } else if (row.type === 2) {
@@ -138,7 +138,7 @@ export default () => {
             name="classify"
             label="请选择科目"
             rules={[{ required: true }]}
-            options={classifyList?.data.data.list.map((item) => ({
+            options={classifyList?.data.data.list.map((item: { name: any; _id: any; }) => ({
               label: item.name,
               value: item._id,
             }))}
@@ -190,7 +190,7 @@ export default () => {
                   if (!questionsNumber) {
                     return message.error("请选择考题数量");
                   }
-                  const questions = [];
+                  const questions: any[] = [];
                   const datas = JSON.parse(JSON.stringify(questionList));
                   while (questions.length < questionsNumber) {
                     questions.push(...
@@ -222,7 +222,7 @@ export default () => {
             <ProDescriptions column={1} title="试卷信息" dataSource={paperInfo}>
               <ProDescriptions.Item dataIndex="name" />
               <ProDescriptions.Item dataIndex="classify" label="考试科目" />
-              {paperInfo?.questions?.map((item) => {
+              {paperInfo?.questions?.map((item: { question: string | number | boolean | react.ReactElement<any, string | react.JSXElementConstructor<any>> | Iterable<react.ReactNode> | react.ReactPortal | null | undefined; type: number; options: string | number | boolean | any[] | react.ReactElement<any, string | react.JSXElementConstructor<any>> | Iterable<react.ReactNode> | null | undefined; answer: string | number | boolean | react.ReactElement<any, string | react.JSXElementConstructor<any>> | Iterable<react.ReactNode> | react.ReactPortal | null | undefined; }) => {
                 if (!item) {
                   return "";
                 }
@@ -234,7 +234,7 @@ export default () => {
                       {item.type === 3 && "判断题"}
                     </h3>
                     <ul>
-                      {Array.isArray(item.options) ? item.options.map((option, index) => (
+                      {Array.isArray(item.options) ? item.options.map((option: string | number | boolean | react.ReactElement<any, string | react.JSXElementConstructor<any>> | Iterable<react.ReactNode> | react.ReactPortal | null | undefined, index: react.Key | null | undefined) => (
                         <li key={index}>
                           {(index + 10).toString(16).toUpperCase()} {option}
                         </li>
