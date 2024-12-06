@@ -2,7 +2,6 @@ import axios from "./request";
 import type {
   loginParams,
   userListParams,
-  editUserInfo,
   userInfoParams,
   userCreateParams,
   examinationCreateParams
@@ -69,36 +68,36 @@ export const apiPermissionList = () => {
   return axios.get("/permission/list");
 };
 // 编辑菜单
-export const apiPermissionUpdate = (params) => {
+export const apiPermissionUpdate = (params:any) => {
   return axios.post("/permission/update", params);
 };
 // 删除菜单
-export const apiPermissionRemove = (params) => {
+export const apiPermissionRemove = (params:any) => {
   return axios.post("/permission/remove", params);
 };
 // 新建菜单
-export const apiPermissionCreate = (params) => {
+export const apiPermissionCreate = (params:any) => {
   return axios.post("/permission/create", params);
 };
 
 // 创建试卷
-export const apiExamCreate = (params) => {
+export const apiExamCreate = (params:any) => {
   return axios.post("/exam/create", params);
 };
 // 查询考试列表
-export const apiExamList = (params) => {
+export const apiExamList = (params:any) => {
   return axios.get("/exam/list", { params });
 };
 // 编辑试卷
-export const apiExamUpdate = (params) => {
+export const apiExamUpdate = (params:any) => {
   return axios.post("/exam/update", params);
 };
 // 删除试卷
-export const apiExamRemove = (params) => {
+export const apiExamRemove = (params:any) => {
   return axios.post("/exam/remove", params);
 };
 // 查询试卷详情
-export const apiExamDetail = (params) => {
+export const apiExamDetail = (params:any) => {
   return axios.get("/exam/detail", { params });
 };
 
@@ -107,95 +106,95 @@ export const apiExaminationCreate = (params:examinationCreateParams) => {
   return axios.post("/examination/create", params);
 };
 // 查询考试列表
-export const apiExaminationList = (params) => {
+export const apiExaminationList = (params:any) => {
   return axios.get("/examination/list", { params });
 };
 // 编辑考试
-export const apiExaminationUpdate = (params) => {
+export const apiExaminationUpdate = (params:any) => {
   return axios.post("/examination/update", params);
 };
 // 删除考试
-export const apiExaminationRemove = (params) => {
+export const apiExaminationRemove = (params:any) => {
   return axios.post("/examination/remove", params);
 };
 // 查询考试详情
-export const apiExaminationDetail = (params) => {
+export const apiExaminationDetail = (params:any) => {
   return axios.get("/examination/detail", { params });
 };
 
 // 创建科目
-export const apiClassifyCreate = (params) => {
+export const apiClassifyCreate = (params:any) => {
   return axios.post("/classify/create", params);
 };
 // 查询科目列表
-export const apiClassifyList = (params) => {
+export const apiClassifyList = (params:any) => {
   return axios.get("/classify/list", { params });
 };
 // 编辑科目
-export const apiClassifyUpdate = (params) => {
+export const apiClassifyUpdate = (params:any) => {
   return axios.post("/classify/update", params);
 };
 // 删除科目
-export const apiClassifyRemove = (params) => {
+export const apiClassifyRemove = (params:any) => {
   return axios.post("/classify/remove", params);
 };
 
 // 创建班级
-export const apiStudentGroupCreate = (params) => {
+export const apiStudentGroupCreate = (params:any) => {
   return axios.post("/studentGroup/create", params);
 };
 // 查询班级列表
-export const apiStudentGroupList = (params) => {
+export const apiStudentGroupList = (params:any) => {
   return axios.get("/studentGroup/list", { params });
 };
 // 编辑班级
-export const apiStudentGroupUpdate = (params) => {
+export const apiStudentGroupUpdate = (params:any) => {
   return axios.post("/studentGroup/update", params);
 };
 // 删除班级
-export const apiStudentGroupRemove = (params) => {
+export const apiStudentGroupRemove = (params:any) => {
   return axios.post("/studentGroup/remove", params);
 };
 
 // 创建试题
-export const apiQuestionCreate= (params) => {
+export const apiQuestionCreate= (params:any) => {
   return axios.post("/question/create", params);
 };
 // 查询题库列表
-export const apiQuestionList = (params) => {
+export const apiQuestionList = (params:any) => {
   return axios.get("/question/list", { params });
 };
 // 编辑题目
-export const apiQuestionUpdate = (params) => {
+export const apiQuestionUpdate = (params:any) => {
   return axios.post("/question/update", params);
 };
 // 删除题目
-export const apiQuestionRemove = (params) => {
+export const apiQuestionRemove = (params:any) => {
   return axios.post("/question/remove", params);
 };
 // 查询试题类型
-export const apiQuestionTypeList = (params) => {
+export const apiQuestionTypeList = (params:any) => {
   return axios.get("/question/type/list", { params });
 };
 // 批量创建试题
-export const apiQuestionCreateMultiple= (params) => {
+export const apiQuestionCreateMultiple= (params:any) => {
   return axios.post("/question/create/multiple", params);
 };
 
 
 // 创建学生
-export const apiStudentCreate = (params) => {
+export const apiStudentCreate = (params:any) => {
   return axios.post(`/student/create?${Date.now()}`, params);
 };
 // 查询学生列表
-export const apiStudentList = (params) => {
+export const apiStudentList = (params:any) => {
   return axios.get("/student/list", { params });
 };
 // 编辑学生
-export const apiStudentUpdate = (params) => {
+export const apiStudentUpdate = (params:any) => {
   return axios.post("/student/update", params);
 };
 // 删除学生
-export const apiStudentRemove = (params) => {
+export const apiStudentRemove = (params:any) => {
   return axios.post("/student/remove", params);
 };
