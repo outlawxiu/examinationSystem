@@ -1,5 +1,4 @@
 import React from "react";
-import style from "./welcome.module.scss";
 import { Image} from 'antd'
 import welcomePage from '../../../public/welcome.png'
 const welcome = () => {

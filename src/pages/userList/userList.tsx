@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import type { PopconfirmProps } from "antd";
 import type { ProFormInstance } from "@ant-design/pro-components";
 import {
@@ -9,7 +9,7 @@ import {
 } from "../../services/index";
 import PermissionLayout from "../../components/PermissionLayout/PermissionLayout";
 import { message, Select, Space } from "antd";
-import type { userInfo, editUserInfo, userCreateParams } from "../../type";
+import type { userInfo, editUserInfo } from "../../type";
 import type { ProColumns } from "@ant-design/pro-components";
 import { ProTable, ProForm } from "@ant-design/pro-components";
 import Role from "./Role";
@@ -33,7 +33,6 @@ const userList = () => {
     pagesize: 5,
   });
   const [searchParams, setSearchParams] = useState({});
-  const [roleList, setRoleList] = useState<string[]>();
   const columns: ProColumns<userInfo>[] = [
     {
       title: "用户名",
